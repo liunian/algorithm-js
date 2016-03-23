@@ -46,7 +46,7 @@ describe('Stack', () => {
       assert.equal(stack.pop(), 1);
       assert.equal(stack.size(), 0);
     });
-    
+
     it('pop order', () => {
       stack.push(1);
       stack.push(2);
@@ -54,6 +54,10 @@ describe('Stack', () => {
       assert.equal(stack.pop(), 3);
       assert.equal(stack.pop(), 2);
       assert.equal(stack.pop(), 1);
+    });
+
+    it('pop an empty stack', () => {
+      assert.isNull(stack.pop());
     });
   });
 
