@@ -1,3 +1,6 @@
 # Learn and test algorithm with js
 
-![](https://travis-ci.org/liunian/algorithm-js.svg?branch=master)
+[![][ci-badge]][ci]
+
+[ci]: https://travis-ci.org/liunian/algorithm-js
+[ci-badge]: https://travis-ci.org/liunian/algorithm-js.svg?branch=master
