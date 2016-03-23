@@ -4,13 +4,9 @@ var Bag = require('../src/bag');
 describe('Bag', () => {
   var bag;
 
-  beforeEach(() => {
-    bag = new Bag();
-  });
+  beforeEach(() => bag = new Bag());
 
-  afterEach(() => {
-    bag = null;
-  });
+  afterEach(() => bag = null);
 
   describe('Bag#Bag', () => {
     it('instance of', () => {
