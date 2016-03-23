@@ -29,19 +29,8 @@ describe('Bag', () => {
       assert.isTrue(exist);
     });
 
-    it('test for-of', () => {
-      var source = [1, '4', 7];
-      source.forEach((i) => bag.add(i));
-
-      var ret = [];
-      for (var i of bag) {
-        ret.push(i);
-      }
-
-      assert.equal(bag.size(), source.length);
-      ret.forEach((i) => {
-        assert.include(source, i);
-      });
+    it('throw an error when add nothing', () => {
+      assert.throws(bag.add);
     });
   });
 
@@ -64,6 +53,33 @@ describe('Bag', () => {
     it('size with 1 item is 1', () => {
       bag.add('a');
       assert.equal(bag.size(), 1);
+    });
+  });
+
+  describe('Bag iterate', () => {
+    it('test for-of', () => {
+      var source = [1, '4', 7];
+      source.forEach((i) => bag.add(i));
+
+      var ret = [];
+      for (var i of bag) {
+        ret.push(i);
+      }
+
+      assert.equal(bag.size(), source.length);
+      ret.forEach((i) => {
+        assert.include(source, i);
+      });
+    });
+
+    it('for of empty bag', () => {
+      var count = 0;
+
+      for (var _ of bag) {
+        count++;
+      }
+
+      assert.equal(count, 0);
     });
   });
 });

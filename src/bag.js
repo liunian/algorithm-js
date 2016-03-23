@@ -28,6 +28,10 @@ Bag.prototype = {
   },
 
   add: function(item) {
+    if (arguments.length == 0) {
+      throw new Error('Expected an item');
+    }
+
     this._list.push(item);
   },
   isEmpty: function() {
