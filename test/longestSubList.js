@@ -4,7 +4,7 @@
 var assert = require('chai').assert;
 var LS = require('../src/longestSubList');
 
-describe('longestSubList', function() {
+describe('longestSubList', () => {
   var sources = [
     [1, -2, 3, 5, -1],
     [1, -2, 3, -8, 5, 1],
@@ -19,10 +19,11 @@ describe('longestSubList', function() {
     []
   ];
 
-  it('test', function() {
+  it('test source-result map', () => {
     var arr = sources.map(LS);
-    arr.forEach(function(i, index) {
+    arr.forEach((i, index) => {
       assert.deepEqual(i, res[index]);
-    })
-  })
+    });
+  });
+
 });

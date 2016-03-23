@@ -5,26 +5,26 @@
 var assert = require('chai').assert;
 var Set = require('../src/set');
 
-describe('Set', function() {
+describe('Set', () => {
 
   var set;
 
-  beforeEach(function() {
+  beforeEach(() => {
     set = new Set();
   });
 
-  afterEach(function() {
+  afterEach(() => {
     set = null;
   });
 
-  describe('init', function() {
-    it('when init it should be empty', function() {
+  describe('init', () => {
+    it('when init it should be empty', () => {
       assert.equal(set.size(), 0, 'size of empty set is 0');
     });
   });
 
-  describe('#add', function() {
-    it('add', function() {
+  describe('#add', () => {
+    it('add', () => {
       set.add(1);
       assert.equal(set.size(), 1, 'should be 1');
 
@@ -33,7 +33,7 @@ describe('Set', function() {
       assert.equal(set.size(), 3, 'should be 3');
     });
 
-    it('add one item more than one times', function() {
+    it('add one item more than one times', () => {
       set.add(1);
       set.add(1);
       assert.equal(set.size(), 1, 'should add once');
@@ -42,7 +42,7 @@ describe('Set', function() {
       assert.equal(set.size(), 2, 'add another will be 2');
     });
 
-    it('has', function() {
+    it('has', () => {
       assert.notOk(set.has(1), 'first has nothing');
 
       set.add(1);
@@ -50,7 +50,7 @@ describe('Set', function() {
       assert.notOk(set.has('1'), 'string "1" is not number 1');
     });
 
-    it('del', function() {
+    it('del', () => {
       var num = 5;
       for (var i = 0; i < num; i++) {
         set.add(i);
@@ -76,8 +76,8 @@ describe('Set', function() {
     });
   });
 
-  describe('#isSuperSet', function() {
-    it('isSuperSet', function() {
+  describe('#isSuperSet', () => {
+    it('isSuperSet', () => {
       set.add(1);
       set.add(2);
 
@@ -95,8 +95,8 @@ describe('Set', function() {
     });
   });
 
-  describe('#isSubSet', function() {
-    it('isSubSet', function() {
+  describe('#isSubSet', () => {
+    it('isSubSet', () => {
       set.add(1);
       set.add(2);
 
@@ -114,8 +114,8 @@ describe('Set', function() {
     });
   });
 
-  describe('#equals', function() {
-    it('equals', function() {
+  describe('#equals', () => {
+    it('equals', () => {
       var aSet = new Set();
 
       assert.ok(set.equals(aSet));
@@ -138,15 +138,15 @@ describe('Set', function() {
 
   // todo: clone
 
-  describe('#intersection', function() {
-    it('intersection', function() {
+  describe('#intersection', () => {
+    it('intersection', () => {
 
     });
   });
 
 
-  describe('#union', function() {
-    it('union', function() {
+  describe('#union', () => {
+    it('union', () => {
       set.add(1);
       set.add(2);
 
@@ -159,8 +159,8 @@ describe('Set', function() {
   });
 
 
-  describe('#clear', function() {
-    it('clear', function() {
+  describe('#clear', () => {
+    it('clear', () => {
       set.add(1);
       set.add(2);
       set.add(3);
@@ -172,8 +172,8 @@ describe('Set', function() {
     })
   });
 
-  describe('#valueOf', function() {
-    it('valueOf', function() {
+  describe('#valueOf', () => {
+    it('valueOf', () => {
       assert.equal(set.valueOf().toString(), [].toString());
 
       set.add(1);
