@@ -1,0 +1,190 @@
+/**
+ * Created by bd on 8/20/14.
+ */
+
+var assert = require('chai').assert;
+var Set = require('../src/set');
+
+describe('Set', function() {
+
+  var set;
+
+  beforeEach(function() {
+    set = new Set();
+  });
+
+  afterEach(function() {
+    set = null;
+  });
+
+  describe('init', function() {
+    it('when init it should be empty', function() {
+      assert.equal(set.size(), 0, 'size of empty set is 0');
+    });
+  });
+
+  describe('#add', function() {
+    it('add', function() {
+      set.add(1);
+      assert.equal(set.size(), 1, 'should be 1');
+
+      set.add(2);
+      set.add(3);
+      assert.equal(set.size(), 3, 'should be 3');
+    });
+
+    it('add one item more than one times', function() {
+      set.add(1);
+      set.add(1);
+      assert.equal(set.size(), 1, 'should add once');
+
+      set.add(2);
+      assert.equal(set.size(), 2, 'add another will be 2');
+    });
+
+    it('has', function() {
+      assert.notOk(set.has(1), 'first has nothing');
+
+      set.add(1);
+      assert.ok(set.has(1), 'now has 1');
+      assert.notOk(set.has('1'), 'string "1" is not number 1');
+    });
+
+    it('del', function() {
+      var num = 5;
+      for (var i = 0; i < num; i++) {
+        set.add(i);
+      }
+
+      assert.equal(set.size(), num, 'now has ' + num + ' items');
+
+      for (i = 0; i < num; i++) {
+        assert.ok(set.has(i), 'has ' + i);
+      }
+
+      set.del(0);
+      assert.notOk(set.has(0), 'delete the first item');
+      assert.equal(set.size(), num - 1);
+
+      set.del(num - 1);
+      assert.notOk(set.has(num - 1), 'delete the last item');
+      assert.equal(set.size(), num - 2);
+
+      set.del(2);
+      assert.notOk(set.has(2), 'delete an item in the middle');
+      assert.equal(set.size(), num - 3);
+    });
+  });
+
+  describe('#isSuperSet', function() {
+    it('isSuperSet', function() {
+      set.add(1);
+      set.add(2);
+
+      var aSet = new Set();
+      assert.ok(set.isSuperSet(aSet));
+
+      aSet.add(1);
+      assert.ok(set.isSuperSet(aSet));
+
+      aSet.add(2);
+      assert.ok(set.isSuperSet(aSet));
+
+      aSet.add(3);
+      assert.notOk(set.isSuperSet(aSet));
+    });
+  });
+
+  describe('#isSubSet', function() {
+    it('isSubSet', function() {
+      set.add(1);
+      set.add(2);
+
+      var aSet = new Set();
+      assert.notOk(set.isSubSet(aSet));
+
+      aSet.add(1);
+      assert.notOk(set.isSubSet(aSet));
+
+      aSet.add(2);
+      assert.ok(set.isSubSet(aSet));
+
+      aSet.add(3);
+      assert.ok(set.isSubSet(aSet));
+    });
+  });
+
+  describe('#equals', function() {
+    it('equals', function() {
+      var aSet = new Set();
+
+      assert.ok(set.equals(aSet));
+
+      set.add(1);
+      assert.notOk(set.equals(aSet));
+
+      aSet.add(1);
+      assert.ok(set.equals(aSet));
+
+      aSet.add(2);
+      assert.notOk(set.equals(aSet));
+
+      set.add(2);
+      assert.ok(set.equals(aSet));
+    });
+
+    // todo: object item
+  });
+
+  // todo: clone
+
+  describe('#intersection', function() {
+    it('intersection', function() {
+
+    });
+  });
+
+
+  describe('#union', function() {
+    it('union', function() {
+      set.add(1);
+      set.add(2);
+
+      var aSet = new Set();
+      aSet.add(2);
+      aSet.add(3);
+
+
+    });
+  });
+
+
+  describe('#clear', function() {
+    it('clear', function() {
+      set.add(1);
+      set.add(2);
+      set.add(3);
+
+      assert.equal(set.size(), 3);
+
+      set.clear();
+      assert.equal(set.size(), 0, 'should be 0 after clear');
+    })
+  });
+
+  describe('#valueOf', function() {
+    it('valueOf', function() {
+      assert.equal(set.valueOf().toString(), [].toString());
+
+      set.add(1);
+      set.add(4);
+      set.add(2);
+      set.add(1);
+
+      assert.equal(set.valueOf().toString(), [1, 2, 4].toString());
+    });
+
+
+    // todo: object item
+  });
+});
