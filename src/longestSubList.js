@@ -1,11 +1,4 @@
 /**
- * Created by bd on 15/4/1.
- */
-
-exports.longestSubList = longestSubList;
-exports.sum = sum;
-
-/**
  * 找出和最大的连续子数组，如  [1, -2, 3, 5, -1] 的结果是 [3, 5]
  *
  * 动态规划
@@ -48,14 +41,4 @@ function longestSubList(list) {
   return memo[inx];
 }
 
-
-/**
- * 数组求和
- * @param {Array<number>} list
- * @return {number}
- */
-function sum(list) {
-  return list.reduce(function(prev, cur) {
-    return prev + cur
-  }, 0)
-}
+module.exports = longestSubList;
