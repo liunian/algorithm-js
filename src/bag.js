@@ -19,7 +19,7 @@ Bag.prototype = {
     return this;
   },
   next: function() {
-    if (this._index > this._list.length) {
+    if (this._index >= this._list.length) {
       this._index = 0;
       return {done: true, value: this._list[this._index]};
     }

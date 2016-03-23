@@ -32,6 +32,21 @@ describe('Bag', () => {
       }
       assert.isTrue(exist);
     });
+
+    it('test for-of', () => {
+      var source = [1, '4', 7];
+      source.forEach((i) => bag.add(i));
+
+      var ret = [];
+      for (var i of bag) {
+        ret.push(i);
+      }
+
+      assert.equal(bag.size(), source.length);
+      ret.forEach((i) => {
+        assert.include(source, i);
+      });
+    });
   });
 
   describe('Bag#isEmpty', () => {
