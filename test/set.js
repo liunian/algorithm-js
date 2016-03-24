@@ -43,7 +43,7 @@ describe('Set', () => {
     });
 
     it('has', () => {
-      assert.notOk(set.has(1), 'first has nothing');
+      assert.notOk(set.has(1), '_first has nothing');
 
       set.add(1);
       assert.ok(set.has(1), 'now has 1');
@@ -63,11 +63,11 @@ describe('Set', () => {
       }
 
       set.del(0);
-      assert.notOk(set.has(0), 'delete the first item');
+      assert.notOk(set.has(0), 'delete the _first item');
       assert.equal(set.size(), num - 1);
 
       set.del(num - 1);
-      assert.notOk(set.has(num - 1), 'delete the last item');
+      assert.notOk(set.has(num - 1), 'delete the _last item');
       assert.equal(set.size(), num - 2);
 
       set.del(2);

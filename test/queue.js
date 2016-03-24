@@ -81,8 +81,8 @@ describe('Queue', () => {
         ret.push(i);
       }
 
-      ret.forEach((item, inx) => {
-        assert.equal(item, source[inx]);
+      source.forEach((item, inx) => {
+        assert.equal(item, ret[inx]);
       });
     });
 
