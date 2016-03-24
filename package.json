@@ -16,7 +16,7 @@
   "scripts": {
     "test": "node_modules/.bin/mocha --harmony --reporter spec test/*.js",
     "test-cov": "node --harmony node_modules/.bin/istanbul cover node_modules/.bin/_mocha -- test/*.js",
-    "coveralls": "node_modules/.bin/coveralls coverage/lcov.info"
+    "coveralls": "cat coverage/lcov.info | node_modules/.bin/coveralls"
   },
   "engines": {
     "node": ">=0.4.0"
