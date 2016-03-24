@@ -66,7 +66,7 @@ describe('Bag', () => {
         ret.push(i);
       }
 
-      assert.equal(bag.size(), source.length);
+      assert.equal(ret.length, source.length);
       source.forEach((i) => {
         assert.include(ret, i);
       });

@@ -81,6 +81,7 @@ describe('Queue', () => {
         ret.push(i);
       }
 
+      assert.equal(ret.length, source.length);
       source.forEach((item, inx) => {
         assert.equal(item, ret[inx]);
       });
