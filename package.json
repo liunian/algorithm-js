@@ -14,8 +14,8 @@
     "mocha": "~2.4.5"
   },
   "scripts": {
-    "test": "node_modules/.bin/mocha --harmony --reporter spec test/*.js",
-    "test-cov": "node --harmony node_modules/.bin/istanbul cover node_modules/.bin/_mocha -- test/*.js",
+    "test": "node_modules/.bin/mocha --harmony --recursive --reporter spec test/",
+    "test-cov": "node --harmony node_modules/.bin/istanbul cover node_modules/.bin/_mocha -- --recursive test/",
     "coveralls": "cat coverage/lcov.info | node_modules/.bin/coveralls"
   },
   "engines": {
