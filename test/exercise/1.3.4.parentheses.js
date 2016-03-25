@@ -10,6 +10,8 @@ describe('parentheses', () => {
       '[': false,
       '[}': false,
       '[]': true,
+      '[a]': true,
+      '[a)': false,
       '[()]{}{[()()]()}': true,
       '[(])': false
     };

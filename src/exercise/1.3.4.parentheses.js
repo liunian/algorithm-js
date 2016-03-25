@@ -26,7 +26,7 @@ function parenthesesMatch(str) {
         }
         break;
       default:
-        stack.push(c);
+        // 仅做括号匹配，非括号直接忽略
         break;
     }
   }
