@@ -2,12 +2,12 @@
  * Created by bd on 8/20/14.
  */
 
-var assert = require('chai').assert;
-var Set = require('../src/set');
+const assert = require('assert');
+const Set = require('../src/set');
 
 describe('Set', () => {
 
-  var set;
+  let set;
 
   beforeEach(() => {
     set = new Set();
@@ -43,11 +43,11 @@ describe('Set', () => {
     });
 
     it('has', () => {
-      assert.notOk(set.has(1), '_first has nothing');
+      assert.ok(!set.has(1), '_first has nothing');
 
       set.add(1);
       assert.ok(set.has(1), 'now has 1');
-      assert.notOk(set.has('1'), 'string "1" is not number 1');
+      assert.ok(!set.has('1'), 'string "1" is not number 1');
     });
 
     it('del', () => {
@@ -63,15 +63,15 @@ describe('Set', () => {
       }
 
       set.del(0);
-      assert.notOk(set.has(0), 'delete the _first item');
+      assert.ok(!set.has(0), 'delete the _first item');
       assert.equal(set.size(), num - 1);
 
       set.del(num - 1);
-      assert.notOk(set.has(num - 1), 'delete the _last item');
+      assert.ok(!set.has(num - 1), 'delete the _last item');
       assert.equal(set.size(), num - 2);
 
       set.del(2);
-      assert.notOk(set.has(2), 'delete an item in the middle');
+      assert.ok(!set.has(2), 'delete an item in the middle');
       assert.equal(set.size(), num - 3);
     });
   });
@@ -91,7 +91,7 @@ describe('Set', () => {
       assert.ok(set.isSuperSet(aSet));
 
       aSet.add(3);
-      assert.notOk(set.isSuperSet(aSet));
+      assert.ok(!set.isSuperSet(aSet));
     });
   });
 
@@ -101,10 +101,10 @@ describe('Set', () => {
       set.add(2);
 
       var aSet = new Set();
-      assert.notOk(set.isSubSet(aSet));
+      assert.ok(!set.isSubSet(aSet));
 
       aSet.add(1);
-      assert.notOk(set.isSubSet(aSet));
+      assert.ok(!set.isSubSet(aSet));
 
       aSet.add(2);
       assert.ok(set.isSubSet(aSet));
@@ -121,13 +121,13 @@ describe('Set', () => {
       assert.ok(set.equals(aSet));
 
       set.add(1);
-      assert.notOk(set.equals(aSet));
+      assert.ok(!set.equals(aSet));
 
       aSet.add(1);
       assert.ok(set.equals(aSet));
 
       aSet.add(2);
-      assert.notOk(set.equals(aSet));
+      assert.ok(!set.equals(aSet));
 
       set.add(2);
       assert.ok(set.equals(aSet));

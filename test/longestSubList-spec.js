@@ -1,7 +1,7 @@
 /**
  * Created by bd on 15/4/1.
  */
-var assert = require('chai').assert;
+const assert = require('assert');
 var LS = require('../src/longestSubList');
 
 describe('longestSubList', () => {

@@ -1,4 +1,4 @@
-var assert = require('chai').assert;
+const assert = require('assert');
 var Bag = require('../src/bag');
 
 describe('Bag', () => {
@@ -10,7 +10,7 @@ describe('Bag', () => {
 
   describe('Bag#Bag', () => {
     it('instance of', () => {
-      assert.instanceOf(bag, Bag);
+      assert(bag instanceof Bag);
     });
   });
 
@@ -26,7 +26,7 @@ describe('Bag', () => {
           exist = true;
         }
       }
-      assert.isTrue(exist);
+      assert.ok(exist);
     });
 
     it('throw an error when add nothing', () => {
@@ -41,7 +41,7 @@ describe('Bag', () => {
 
     it('not empty', () => {
       bag.add(1);
-      assert.isFalse(bag.isEmpty());
+      assert.equal(bag.isEmpty(), false);
     });
   });
 
@@ -68,7 +68,7 @@ describe('Bag', () => {
 
       assert.equal(ret.length, source.length);
       source.forEach((i) => {
-        assert.include(ret, i);
+        assert.ok(ret.includes(i));
       });
     });
 

@@ -1,4 +1,4 @@
-var assert = require('chai').assert;
+const assert = require('assert');
 var Stack = require('../src/stack');
 
 describe('Stack', () => {
@@ -9,7 +9,7 @@ describe('Stack', () => {
 
   describe('Stack#Stack', () => {
     it('instanceof', () => {
-      assert.instanceOf(stack, Stack);
+      assert.ok(stack instanceof Stack);
     });
   });
 
@@ -36,7 +36,7 @@ describe('Stack', () => {
     });
 
     it('top of empty stack is null', () => {
-      assert.isNull(stack.top());
+      assert.equal(stack.top(), null);
     });
   });
 
@@ -57,18 +57,18 @@ describe('Stack', () => {
     });
 
     it('pop an empty stack', () => {
-      assert.isNull(stack.pop());
+      assert.equal(stack.pop(), null);
     });
   });
 
   describe('Stack#isEmpty', () => {
     it('init stack is empty', () => {
-      assert.isTrue(stack.isEmpty());
+      assert.ok(stack.isEmpty());
     });
 
     it('non-empty stack', () => {
       stack.push(1);
-      assert.isFalse(stack.isEmpty());
+      assert.equal(stack.isEmpty(), false);
     });
   });
 

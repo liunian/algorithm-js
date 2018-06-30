@@ -1,4 +1,4 @@
-var assert = require('chai').assert;
+const assert = require('assert');
 var LinkedList = require('../src/linkedList');
 
 describe('LinkedList', () => {
@@ -9,7 +9,7 @@ describe('LinkedList', () => {
 
   describe('LinkedList#constructor', () => {
     it('instanceof', () => {
-      assert.instanceOf(linkedList, LinkedList);
+      assert.ok(linkedList instanceof LinkedList);
     });
   });
 
@@ -22,7 +22,7 @@ describe('LinkedList', () => {
 
   describe('LinkedList#pop', () => {
     it('pop an empty list', () => {
-      assert.isNull(linkedList.pop());
+      assert.equal(linkedList.pop(), null);
     });
 
     it('pop an item', () => {

@@ -1,4 +1,4 @@
-var assert = require('chai').assert;
+const assert = require('assert');
 var Queue = require('../src/queue');
 
 describe('Queue', () => {
@@ -9,7 +9,7 @@ describe('Queue', () => {
 
   describe('Queue#Queue', () => {
     it('instance of', () => {
-      assert.instanceOf(queue, Queue);
+      assert.ok(queue instanceof Queue);
     });
   });
 
@@ -26,7 +26,7 @@ describe('Queue', () => {
         }
       }
 
-      assert.isTrue(exist);
+      assert.ok(exist);
     });
 
     it('enqueue nothing should throw error', () => {
@@ -36,7 +36,7 @@ describe('Queue', () => {
 
   describe('Queue#dequeue', () => {
     it('dequeue an empty queue return undefined', () => {
-      assert.isNull(queue.dequeue());
+      assert.equal(queue.dequeue(), null);
     });
 
     it('dequeue', () => {
@@ -56,7 +56,7 @@ describe('Queue', () => {
 
     it('queue with item is not empty', () => {
       queue.enqueue(1);
-      assert.isFalse(queue.isEmpty());
+      assert.equal(queue.isEmpty(), false);
     });
   });
 
