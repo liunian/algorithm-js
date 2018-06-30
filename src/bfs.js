@@ -1,5 +1,7 @@
 /**
- * 宽度优先搜索基于邻接表的图
+ * 逛度优先搜索基于邻接表的图
+ *
+ * 适用于非加权图
  */
 
 const Stack = require('./stack');
@@ -7,15 +9,17 @@ const Stack = require('./stack');
 function bfs(graph, from, to) {
   const adjList = graph.adjList;
 
-  const queue = new Stack();
+  if (!adjList.has(from)) return null;
+
+  const stack = new Stack();
   const visitedVertex = [];
   const targetSourceMap = {};
 
-  queue.push(from);
+  stack.push(from);
 
   outer:
-  while (queue.size() > 0) {
-    let vertex = queue.pop();
+  while (!stack.isEmpty()) {
+    let vertex = stack.pop();
     visitedVertex.push(vertex);
 
     if (adjList.has(vertex)) {
@@ -29,7 +33,7 @@ function bfs(graph, from, to) {
             break outer;
           }
 
-          queue.push(v);
+          stack.push(v);
         }
       }
     }

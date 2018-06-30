@@ -28,6 +28,9 @@ Queue.prototype = {
 
     return {done: false, value: this._list[this._index++]};
   },
+  has: function(item) {
+    return this._list.includes(item);
+  },
   enqueue: function(item) {
     if (arguments.length == 0) {
       throw new Error('enqueue expected an item');

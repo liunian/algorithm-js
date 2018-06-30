@@ -4,7 +4,7 @@ const bfsSpec = require('../src/bfs');
 
 describe('BFS', () => {
   it('minimum edge', () => {
-    const vertexs = ["North Gate", "South Gate", "Classroom", "Square", "Toilet", "Canteen"];
+    const vertices = ["North Gate", "South Gate", "Classroom", "Square", "Toilet", "Canteen"];
     const edges = [
       ["North Gate", "Classroom"],
       ["North Gate", "Square"],
@@ -15,7 +15,7 @@ describe('BFS', () => {
       ["Canteen", "South Gate"]
     ];
 
-    const graph = new Graph(vertexs, edges);
+    const graph = new Graph(vertices, edges);
 
     const northGate2Canteen = ['North Gate', 'Square', 'Canteen'];
     const classroom2SouthGate = ['Classroom', 'Toilet', 'South Gate'];

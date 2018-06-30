@@ -1,13 +1,13 @@
 /**
- * 基于邻接表的无向图
+ * 基于邻接表的无向非加权图
  *
  */
 class AdjListUndigraph {
-  constructor(vertexs = [], edges = []) {
+  constructor(vertices = [], edges = []) {
     // 邻接表
     this.adjList = new Map();
 
-    vertexs.forEach(this.addVertex.bind(this));
+    vertices.forEach(this.addVertex.bind(this));
     edges.forEach(this.addEdge.bind(this));
   }
 
