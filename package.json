@@ -1,26 +1,28 @@
 {
-  "name": "algorithem_js_version",
-  "version": "0.1.0",
-  "description": "algorithems in js",
-  "directories": {
-    "test": "test"
-  },
-  "dependencies": {},
-  "devDependencies": {
-    "coveralls": "~2.11.8",
-    "intelli-espower-loader": "^1.0.1",
-    "istanbul": "~0.4.2",
-    "mocha": "~2.4.5",
-    "power-assert": "^1.6.0"
-  },
-  "scripts": {
-    "test": "node_modules/.bin/mocha --require intelli-espower-loader --recursive --reporter spec test/",
-    "test-cov": "node node_modules/.bin/istanbul cover node_modules/.bin/_mocha -- --require intelli-espower-loader --recursive test/",
-    "coveralls": "cat coverage/lcov.info | node_modules/.bin/coveralls"
-  },
-  "engines": {
-    "node": ">=8"
-  },
-  "author": "liunian",
-  "license": "MIT"
+	"name": "algorithem_js_version",
+	"version": "0.1.0",
+	"description": "algorithems in js",
+	"directories": {
+		"test": "test"
+	},
+	"dependencies": {},
+	"devDependencies": {
+		"coveralls": "~2.11.8",
+		"intelli-espower-loader": "^1.0.1",
+		"istanbul": "~0.4.2",
+		"mocha": "~2.4.5",
+		"power-assert": "^1.6.0",
+		"prettier": "^1.13.7"
+	},
+	"scripts": {
+		"prettier": "prettier --write ./**/*.js",
+		"test": "node_modules/.bin/mocha --require intelli-espower-loader --recursive --reporter spec test/",
+		"test-cov": "node node_modules/.bin/istanbul cover node_modules/.bin/_mocha -- --require intelli-espower-loader --recursive test/",
+		"coveralls": "cat coverage/lcov.info | node_modules/.bin/coveralls"
+	},
+	"engines": {
+		"node": ">=8"
+	},
+	"author": "liunian",
+	"license": "MIT"
 }

@@ -7,49 +7,48 @@
 const Stack = require('./stack');
 
 function bfs(graph, from, to) {
-  const adjList = graph.adjList;
+	const adjList = graph.adjList;
 
-  if (!adjList.has(from)) return null;
+	if (!adjList.has(from)) return null;
 
-  const stack = new Stack();
-  const visitedVertex = [];
-  const targetSourceMap = {};
+	const stack = new Stack();
+	const visitedVertex = [];
+	const targetSourceMap = {};
 
-  stack.push(from);
+	stack.push(from);
 
-  outer:
-  while (!stack.isEmpty()) {
-    let vertex = stack.pop();
-    visitedVertex.push(vertex);
+	outer: while (!stack.isEmpty()) {
+		let vertex = stack.pop();
+		visitedVertex.push(vertex);
 
-    if (adjList.has(vertex)) {
-      let vertexList = adjList.get(vertex);
-      for (let i = 0, l = vertexList.length; i < l; i++) {
-        let v = vertexList[i];
-        if (!visitedVertex.includes(v)) {
-          targetSourceMap[v] = vertex;
+		if (adjList.has(vertex)) {
+			let vertexList = adjList.get(vertex);
+			for (let i = 0, l = vertexList.length; i < l; i++) {
+				let v = vertexList[i];
+				if (!visitedVertex.includes(v)) {
+					targetSourceMap[v] = vertex;
 
-          if (v === to) {
-            break outer;
-          }
+					if (v === to) {
+						break outer;
+					}
 
-          stack.push(v);
-        }
-      }
-    }
-  }
+					stack.push(v);
+				}
+			}
+		}
+	}
 
-  if (!targetSourceMap[to]) return null;
+	if (!targetSourceMap[to]) return null;
 
-  const path = [to];
-  let node = targetSourceMap[to];
-  do {
-    path.unshift(node);
-    node = targetSourceMap[node];
-  } while (node !== from);
-  path.unshift(from);
+	const path = [to];
+	let node = targetSourceMap[to];
+	do {
+		path.unshift(node);
+		node = targetSourceMap[node];
+	} while (node !== from);
+	path.unshift(from);
 
-  return path;
+	return path;
 }
 
 module.exports = bfs;

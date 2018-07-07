@@ -12,33 +12,33 @@
  * @return {Array}
  */
 function longestSubList(list) {
-  var len = list.length;
-  var ret = [];
+	const len = list.length;
+	const ret = [];
 
-  // return empty if empty
-  if (len == 0) {
-    return ret;
-  }
+	// return empty if empty
+	if (len === 0) {
+		return ret;
+	}
 
-  var memo = [[list[0]]];
-  var sumMemo = [list[0]];
-  var inx = 0;
+	const memo = [[list[0]]];
+	const sumMemo = [list[0]];
+	let inx = 0;
 
-  for (var i = 1; i < len; i++) {
-    if (sumMemo[i - 1] > 0) {
-      memo[i] = memo[i - 1].concat(list[i]);
-      sumMemo[i] = sumMemo[i - 1] + list[i];
-    } else {
-      memo[i] = [list[i]];
-      sumMemo[i] = list[i];
-    }
+	for (let i = 1; i < len; i++) {
+		if (sumMemo[i - 1] > 0) {
+			memo[i] = memo[i - 1].concat(list[i]);
+			sumMemo[i] = sumMemo[i - 1] + list[i];
+		} else {
+			memo[i] = [list[i]];
+			sumMemo[i] = list[i];
+		}
 
-    if (sumMemo[i] > sumMemo[inx]) {
-      inx = i;
-    }
-  }
+		if (sumMemo[i] > sumMemo[inx]) {
+			inx = i;
+		}
+	}
 
-  return memo[inx];
+	return memo[inx];
 }
 
 module.exports = longestSubList;

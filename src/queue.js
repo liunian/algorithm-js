@@ -10,47 +10,53 @@
  *
  * @constructor
  */
-function Queue() {
-  this._list = [];
-  this._index = 0;
+class Queue {
+	constructor() {
+		this._list = [];
+		this._index = 0;
+	}
+
+	// use iterator and next to make it iterable
+	[Symbol.iterator]() {
+		return this;
+	}
+
+	next() {
+		if (this._index >= this._list.length) {
+			this._index = 0;
+			return { done: true, value: this._list[this._index] };
+		}
+
+		return { done: false, value: this._list[this._index++] };
+	}
+
+	has(item) {
+		return this._list.includes(item);
+	}
+
+	enqueue(item) {
+		if (arguments.length == 0) {
+			throw new Error('enqueue expected an item');
+		}
+
+		this._list.push(item);
+	}
+
+	dequeue() {
+		if (!this._list.length) {
+			return null;
+		}
+
+		return this._list.splice(0, 1)[0];
+	}
+
+	isEmpty() {
+		return !this._list.length;
+	}
+
+	size() {
+		return this._list.length;
+	}
 }
-
-Queue.prototype = {
-  // use iterator and next to make it iterable
-  [Symbol.iterator]: function() {
-    return this;
-  },
-  next: function() {
-    if (this._index >= this._list.length) {
-      this._index = 0;
-      return {done: true, value: this._list[this._index]};
-    }
-
-    return {done: false, value: this._list[this._index++]};
-  },
-  has: function(item) {
-    return this._list.includes(item);
-  },
-  enqueue: function(item) {
-    if (arguments.length == 0) {
-      throw new Error('enqueue expected an item');
-    }
-
-    this._list.push(item);
-  },
-  dequeue: function() {
-    if (!this._list.length) {
-      return null;
-    }
-
-    return this._list.splice(0, 1)[0];
-  },
-  isEmpty: function() {
-    return !this._list.length;
-  },
-  size: function() {
-    return this._list.length;
-  }
-};
 
 module.exports = Queue;
