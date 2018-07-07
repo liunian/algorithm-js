@@ -134,7 +134,7 @@ class Set {
 	 * @returns {boolean}
 	 */
 	equals(aSet) {
-		if (this.size() != aSet.size()) return false;
+		if (this.size() !== aSet.size()) return false;
 
 		return this.isSuperSet(aSet) && this.isSubSet(aSet);
 	}
@@ -188,11 +188,11 @@ class Set {
 
 	/**
 	 *
-	 * @returns {Array.<T>}
+	 * @returns {string}
 	 */
-	valueOf() {
-		var _list = this._list.slice(0);
-		return _list.sort();
+	toString() {
+		const _list = this._list.slice(0);
+		return _list.sort().toString();
 	}
 }
 

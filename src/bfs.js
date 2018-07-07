@@ -7,9 +7,7 @@
 const Stack = require('./stack');
 
 function bfs(graph, from, to) {
-	const adjList = graph.adjList;
-
-	if (!adjList.has(from)) return null;
+	if (!graph.hasVertex(from)) return null;
 
 	const stack = new Stack();
 	const visitedVertex = [];
@@ -21,19 +19,17 @@ function bfs(graph, from, to) {
 		let vertex = stack.pop();
 		visitedVertex.push(vertex);
 
-		if (adjList.has(vertex)) {
-			let vertexList = adjList.get(vertex);
-			for (let i = 0, l = vertexList.length; i < l; i++) {
-				let v = vertexList[i];
-				if (!visitedVertex.includes(v)) {
-					targetSourceMap[v] = vertex;
+		let vertexList = graph.getRelatedEdges(vertex);
+		for (let i = 0, l = vertexList.length; i < l; i++) {
+			let v = vertexList[i];
+			if (!visitedVertex.includes(v)) {
+				targetSourceMap[v] = vertex;
 
-					if (v === to) {
-						break outer;
-					}
-
-					stack.push(v);
+				if (v === to) {
+					break outer;
 				}
+
+				stack.push(v);
 			}
 		}
 	}

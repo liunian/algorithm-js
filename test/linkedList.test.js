@@ -34,6 +34,10 @@ describe('LinkedList', () => {
 	});
 
 	describe('LinkedList#first', () => {
+		it('first null when empty', () => {
+			assert.equal(linkedList.first(), null);
+		});
+
 		it('push an item', () => {
 			linkedList.push('a');
 			assert.equal(linkedList.first(), 'a');
@@ -57,6 +61,10 @@ describe('LinkedList', () => {
 	});
 
 	describe('LinkedList#last', () => {
+		it('last null when empty', () => {
+			assert.equal(linkedList.last(), null);
+		});
+
 		it('push an item', () => {
 			linkedList.push('a');
 			assert.equal(linkedList.last(), 'a');

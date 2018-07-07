@@ -27,20 +27,20 @@ describe('Set', () => {
 			set.add(1);
 			assert.equal(set.size(), 1, 'should be 1');
 
-			set.add(2);
-			set.add(3);
+			set.add(2).add(3);
 			assert.equal(set.size(), 3, 'should be 3');
 		});
 
 		it('add one item more than one times', () => {
-			set.add(1);
-			set.add(1);
+			set.add(1).add(1);
 			assert.equal(set.size(), 1, 'should add once');
 
 			set.add(2);
 			assert.equal(set.size(), 2, 'add another will be 2');
 		});
+	});
 
+	describe('has', () => {
 		it('has', () => {
 			assert.ok(!set.has(1), '_first has nothing');
 
@@ -48,7 +48,9 @@ describe('Set', () => {
 			assert.ok(set.has(1), 'now has 1');
 			assert.ok(!set.has('1'), 'string "1" is not number 1');
 		});
+	});
 
+	describe('#del', () => {
 		it('del', () => {
 			let i;
 			const num = 5;
@@ -74,12 +76,20 @@ describe('Set', () => {
 			assert.ok(!set.has(2), 'delete an item in the middle');
 			assert.equal(set.size(), num - 3);
 		});
+
+		it('del non-exist item should modify nothing', () => {
+			set
+				.add(1)
+				.add(2)
+				.add(3);
+			set.del(4);
+			assert.equal(set.toString(), [1, 2, 3].toString());
+		});
 	});
 
 	describe('#isSuperSet', () => {
 		it('isSuperSet', () => {
-			set.add(1);
-			set.add(2);
+			set.add(1).add(2);
 
 			const aSet = new Set();
 			assert.ok(set.isSuperSet(aSet));
@@ -97,8 +107,7 @@ describe('Set', () => {
 
 	describe('#isSubSet', () => {
 		it('isSubSet', () => {
-			set.add(1);
-			set.add(2);
+			set.add(1).add(2);
 
 			const aSet = new Set();
 			assert.ok(!set.isSubSet(aSet));
@@ -136,28 +145,48 @@ describe('Set', () => {
 		// todo: object item
 	});
 
-	// todo: clone
+	describe('#clone', () => {
+		it('clone', () => {
+			const aSet = new Set();
+			aSet
+				.add(1)
+				.add('a')
+				.add(3);
+
+			const bSet = aSet.clone();
+			assert.ok(aSet.equals(bSet));
+			assert.notStrictEqual(aSet, bSet);
+		});
+	});
 
 	describe('#intersection', () => {
-		it('intersection', () => {});
+		it('intersection', () => {
+			set.add(1).add(2);
+
+			const aSet = new Set();
+			aSet.add(2).add(3);
+
+			assert.equal(set.intersection(aSet).toString(), [2].toString());
+		});
 	});
 
 	describe('#union', () => {
 		it('union', () => {
-			set.add(1);
-			set.add(2);
+			set.add(1).add(2);
 
 			const aSet = new Set();
-			aSet.add(2);
-			aSet.add(3);
+			aSet.add(2).add(3);
+
+			assert.equal(set.union(aSet).toString(), [1, 2, 3].toString());
 		});
 	});
 
 	describe('#clear', () => {
 		it('clear', () => {
-			set.add(1);
-			set.add(2);
-			set.add(3);
+			set
+				.add(1)
+				.add(2)
+				.add(3);
 
 			assert.equal(set.size(), 3);
 
@@ -166,16 +195,17 @@ describe('Set', () => {
 		});
 	});
 
-	describe('#valueOf', () => {
-		it('valueOf', () => {
-			assert.equal(set.valueOf().toString(), [].toString());
+	describe('#toString', () => {
+		it('toString', () => {
+			assert.equal(set.toString(), [].toString());
 
-			set.add(1);
-			set.add(4);
-			set.add(2);
-			set.add(1);
+			set
+				.add(1)
+				.add(4)
+				.add(2)
+				.add(1);
 
-			assert.equal(set.valueOf().toString(), [1, 2, 4].toString());
+			assert.equal(set.toString(), [1, 2, 4].toString());
 		});
 
 		// todo: object item
