@@ -2,17 +2,17 @@
  * Created by bd on 15/4/1.
  */
 const assert = require('assert');
-var LS = require('../src/longestSubList');
+const LS = require('../src/longestSubList');
 
 describe('longestSubList', () => {
-  var sources = [
+  const sources = [
     [1, -2, 3, 5, -1],
     [1, -2, 3, -8, 5, 1],
     [1, -2, 3, -2, 5, 1],
     []
   ];
 
-  var res = [
+  const res = [
     [3, 5],
     [5, 1],
     [3, -2, 5, 1],
@@ -20,7 +20,7 @@ describe('longestSubList', () => {
   ];
 
   it('test source-result map', () => {
-    var arr = sources.map(LS);
+    const arr = sources.map(LS);
     arr.forEach((i, index) => {
       assert.deepEqual(i, res[index]);
     });

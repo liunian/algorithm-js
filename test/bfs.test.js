@@ -1,6 +1,6 @@
 const assert = require('assert');
 const Graph = require('../src/adjListUndigraph');
-const bfsSpec = require('../src/bfs');
+const bfs = require('../src/bfs');
 
 describe('BFS', () => {
   it('minimum edge', () => {
@@ -20,7 +20,7 @@ describe('BFS', () => {
     const northGate2Canteen = ['North Gate', 'Square', 'Canteen'];
     const classroom2SouthGate = ['Classroom', 'Toilet', 'South Gate'];
 
-    assert.deepEqual(bfsSpec(graph, 'North Gate', 'Canteen'), northGate2Canteen);
-    assert.deepEqual(bfsSpec(graph, 'Classroom', 'South Gate'), classroom2SouthGate);
+    assert.deepEqual(bfs(graph, 'North Gate', 'Canteen'), northGate2Canteen);
+    assert.deepEqual(bfs(graph, 'Classroom', 'South Gate'), classroom2SouthGate);
   });
 });

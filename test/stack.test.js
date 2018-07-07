@@ -1,8 +1,8 @@
 const assert = require('assert');
-var Stack = require('../src/stack');
+const Stack = require('../src/stack');
 
 describe('Stack', () => {
-  var stack;
+  let stack;
 
   beforeEach(() => stack = new Stack());
   afterEach(() => stack = null);

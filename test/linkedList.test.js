@@ -1,8 +1,8 @@
 const assert = require('assert');
-var LinkedList = require('../src/linkedList');
+const LinkedList = require('../src/linkedList');
 
 describe('LinkedList', () => {
-  var linkedList;
+  let linkedList;
 
   beforeEach(() => linkedList = new LinkedList());
   afterEach(() => linkedList = null);
@@ -93,8 +93,8 @@ describe('LinkedList', () => {
 
   describe('for-of', () => {
     it('empty list loop nothing', () => {
-      var count = 0;
-      for (var _ of linkedList) {
+      let count = 0;
+      for (let _ of linkedList) {
         count++;
       }
 
@@ -103,11 +103,11 @@ describe('LinkedList', () => {
 
 
     it('loop from the beginning', () => {
-      var source = [1, '4', 7];
+      const source = [1, '4', 7];
       source.forEach((i) => linkedList.push(i));
 
-      var ret = [];
-      for (var i of linkedList) {
+      const ret = [];
+      for (let i of linkedList) {
         ret.push(i);
       }
 

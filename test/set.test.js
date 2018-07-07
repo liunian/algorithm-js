@@ -51,8 +51,9 @@ describe('Set', () => {
     });
 
     it('del', () => {
-      var num = 5;
-      for (var i = 0; i < num; i++) {
+      let i;
+      const num = 5;
+      for (i = 0; i < num; i++) {
         set.add(i);
       }
 
@@ -81,7 +82,7 @@ describe('Set', () => {
       set.add(1);
       set.add(2);
 
-      var aSet = new Set();
+      const aSet = new Set();
       assert.ok(set.isSuperSet(aSet));
 
       aSet.add(1);
@@ -100,7 +101,7 @@ describe('Set', () => {
       set.add(1);
       set.add(2);
 
-      var aSet = new Set();
+      const aSet = new Set();
       assert.ok(!set.isSubSet(aSet));
 
       aSet.add(1);
@@ -116,7 +117,7 @@ describe('Set', () => {
 
   describe('#equals', () => {
     it('equals', () => {
-      var aSet = new Set();
+      const aSet = new Set();
 
       assert.ok(set.equals(aSet));
 
@@ -150,11 +151,9 @@ describe('Set', () => {
       set.add(1);
       set.add(2);
 
-      var aSet = new Set();
+      const aSet = new Set();
       aSet.add(2);
       aSet.add(3);
-
-
     });
   });
 

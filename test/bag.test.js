@@ -1,8 +1,8 @@
 const assert = require('assert');
-var Bag = require('../src/bag');
+const Bag = require('../src/bag');
 
 describe('Bag', () => {
-  var bag;
+  let bag;
 
   beforeEach(() => bag = new Bag());
 
@@ -17,11 +17,11 @@ describe('Bag', () => {
   describe('Bag#add', () => {
     it('add an item', () => {
       assert.equal(bag.size(), 0);
-      var a = 1;
+      const a = 1;
       bag.add(a);
       assert.equal(bag.size(), 1);
-      var exist = false;
-      for (var i of bag) {
+      let exist = false;
+      for (let i of bag) {
         if (i === a) {
           exist = true;
         }
@@ -58,11 +58,11 @@ describe('Bag', () => {
 
   describe('Bag iterate', () => {
     it('test for-of', () => {
-      var source = [1, '4', 7];
+      const source = [1, '4', 7];
       source.forEach((i) => bag.add(i));
 
-      var ret = [];
-      for (var i of bag) {
+      const ret = [];
+      for (let i of bag) {
         ret.push(i);
       }
 
@@ -73,9 +73,9 @@ describe('Bag', () => {
     });
 
     it('for of empty bag', () => {
-      var count = 0;
+      let count = 0;
 
-      for (var _ of bag) {
+      for (let _ of bag) {
         count++;
       }
 

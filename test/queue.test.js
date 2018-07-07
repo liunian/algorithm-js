@@ -1,8 +1,8 @@
 const assert = require('assert');
-var Queue = require('../src/queue');
+const Queue = require('../src/queue');
 
 describe('Queue', () => {
-  var queue;
+  let queue;
 
   beforeEach(() => queue = new Queue());
   afterEach(() => queue = null);
@@ -16,11 +16,11 @@ describe('Queue', () => {
   describe('Queue#enqueue', () => {
     it('enqueue an item', () => {
       assert.equal(queue.size(), 0);
-      var a = 'a';
+      const a = 'a';
       queue.enqueue(a);
       assert.equal(queue.size(), 1);
-      var exist = false;
-      for (var i of queue) {
+      let exist = false;
+      for (let i of queue) {
         if (i === a) {
           exist = true;
         }
@@ -73,11 +73,11 @@ describe('Queue', () => {
 
   describe('Queue iterate', () => {
     it('for-of', () => {
-      var source = [1, 'a', 3];
+      const source = [1, 'a', 3];
       source.forEach((i) => queue.enqueue(i));
 
-      var ret = [];
-      for(var i of queue) {
+      const ret = [];
+      for(let i of queue) {
         ret.push(i);
       }
 
@@ -88,8 +88,8 @@ describe('Queue', () => {
     });
 
     it('for-of empty queue', () => {
-      var count = 0;
-      for (var i of queue) {
+      let count = 0;
+      for (let i of queue) {
         count++;
       }
 
