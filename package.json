@@ -16,8 +16,8 @@
 	},
 	"scripts": {
 		"prettier": "prettier --write ./**/*.js",
-		"test": "node_modules/.bin/mocha --require intelli-espower-loader --recursive --reporter spec test/",
-		"test-cov": "node node_modules/.bin/istanbul cover node_modules/.bin/_mocha -- --require intelli-espower-loader --recursive test/",
+		"test": "mocha --require intelli-espower-loader --recursive --reporter spec test/",
+		"test-cov": "istanbul cover node_modules/.bin/_mocha -- --require intelli-espower-loader --recursive test/",
 		"coveralls": "cat coverage/lcov.info | node_modules/.bin/coveralls"
 	},
 	"engines": {
